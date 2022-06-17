@@ -1,0 +1,148 @@
+{
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "id": "http://jsonschema.net",
+  "$ref": "http://localhost/system/content.schema",
+  "properties": {
+    "title": {
+      "type": "string",
+      "required": true,
+      "default": "título del nuevo artículo",
+      "title": "Título",
+      "inputType": "Text",
+      "validators": ["required"],
+      "translatable": true
+    },
+    "displayTitle": {
+      "type": "string",
+      "required": false,
+      "default": "",
+      "title": "Mostrar título",
+      "inputType": "DisplayTitle",
+      "validators": [],
+      "help": "Al ver un artículo, este es el título que se mostrará en la página.",
+      "translatable": true
+    },
+    "body": {
+      "type": "string",
+      "default": "",
+      "inputType": "TextArea",
+      "title": "Cuerpo",
+      "validators": [],
+      "translatable": true
+    },
+    "instruction": {
+      "type": "string",
+      "required": false,
+      "title": "Texto de instrucciones",
+      "default": "",
+      "inputType": "Text",
+      "validators": [],
+      "translatable": true
+    },
+    "_classes": {
+      "type": "string",
+      "default": "",
+      "isSetting": true,
+      "inputType": "Text",
+      "validators": [],
+      "title": "Clases",
+      "help": "Se utiliza para diseñar o manipular la apariencia de este Artículo. Estos están predefinidos en el tema o se agregan en Configuración del proyecto> CSS personalizado/Código menos."
+    },
+    "_isOptional": {
+      "type": "boolean",
+      "default": false,
+      "isSetting": true,
+      "inputType": "Checkbox",
+      "validators": [],
+      "title": "¿Es esto opcional?",
+      "help": "No es necesario completar un artículo opcional, ni ninguno de los bloques y componentes contenidos en él."
+    },
+    "_isAvailable": {
+      "type": "boolean",
+      "default": true,
+      "isSetting": true,
+      "inputType": "Checkbox",
+      "validators": [],
+      "title": "¿Está disponible?",
+      "help": "Controla si este artículo y su contenido están disponibles en el curso o no."
+    },
+    "_isHidden": {
+      "type": "boolean",
+      "default": false,
+      "isSetting": true,
+      "inputType": "Checkbox",
+      "validators": [],
+      "title": "¿Esto está escondido?",
+      "help": "Habilitar esto es equivalente a aplicar el CSS 'display:none' al artículo."
+    },
+    "_isVisible": {
+      "type": "boolean",
+      "default": true,
+      "isSetting": true,
+      "inputType": "Checkbox",
+      "validators": [],
+      "title": "¿Es esto visible?",
+      "help": "Deshabilitar esto es equivalente a aplicar el CSS 'visibility:hidden' al artículo."
+    },
+    "_requireCompletionOf": {
+      "type": "number",
+      "default": -1,
+      "isSetting": true,
+      "inputType": "Number",
+      "validators": ["number"],
+      "title": "Requerir la finalización de",
+      "help": "El número de bloques dentro de este artículo que el alumno debe completar para que este artículo se establezca como completado. Un valor de -1 requiere que se completen todos."
+    },
+    "_ariaLevel": {
+      "type": "number",
+      "default": 0,
+      "isSetting": true,
+      "title": "etiqueta ARIA",
+      "inputType": "Number",
+      "validators": ["number"],
+      "help": "Si necesita anular el nivel ARIA predeterminado del artículo (tal como se define en los Ajustes de configuración), configúrelo en cualquier número mayor que 0."
+    },
+    "_onScreen": {
+      "type": "object",
+      "title": "Clases en pantalla",
+      "help": "Estas configuraciones le permiten adjuntar clases al artículo cuando está dentro de la ventana gráfica del navegador; útil para ejecutar animaciones basadas en CSS en artículos a medida que se desplazan a la vista.",
+      "properties": {
+        "_isEnabled": {
+          "type": "boolean",
+          "default": false,
+          "isSetting": true,
+          "inputType": "Checkbox",
+          "validators": [],
+          "title": "¿Activada?"
+        },
+        "_classes": {
+          "type": "string",
+          "default": "",
+          "isSetting": true,
+          "required": false,
+          "inputType": "Text",
+          "validators": [],
+          "title": "Clases",
+          "help": "La(s) clase(s) CSS para agregar al elemento del artículo."
+        },
+        "_percentInviewVertical": {
+          "type": "number",
+          "required": false,
+          "default": 50,
+          "isSetting": true,
+          "title": "Porcentaje a la vista",
+          "inputType": "Number",
+          "validators": ["number"],
+          "help": "Controla qué porcentaje de la altura del artículo debe estar en la ventana gráfica para que se agreguen las clases CSS."
+        }
+      }
+    },
+    "_extensions": {
+      "type": "object"
+    },
+    "themeSettings": {
+      "type": "object"
+    }
+  }
+}

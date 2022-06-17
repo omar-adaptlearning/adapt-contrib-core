@@ -1,0 +1,157 @@
+{
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "id": "http://jsonschema.net",
+  "$ref": "http://localhost/system/content.schema",
+  "properties": {
+    "_trackingId" : {
+      "type" : "number",
+      "default" : 0
+    },
+    "layoutOptions": {
+      "type": "array",
+      "editorOnly": true,
+      "title": "Opciones de diseño"
+    },
+    "title": {
+      "type": "string",
+      "required": true,
+      "default": "nuevo título de bloque",
+      "title": "Título",
+      "inputType": "Text",
+      "validators": ["required"],
+      "translatable": true
+    },
+    "displayTitle": {
+      "type": "string",
+      "required": false,
+      "default": "",
+      "title": "Mostrar título",
+      "inputType": "DisplayTitle",
+      "validators": [],
+      "help": "Al ver un bloque: este es el título que se mostrará en la página",
+      "translatable": true
+    },
+    "body":{
+      "type": "string",
+      "default" : "",
+      "title" : "Cuerpo",
+      "inputType": "TextArea",
+      "validators": [],
+      "translatable": true
+    },
+    "instruction": {
+      "type": "string",
+      "required": false,
+      "title": "Texto de instrucciones",
+      "default": "",
+      "inputType": "Text",
+      "validators": [],
+      "translatable": true
+    },
+    "_classes": {
+      "type": "string",
+      "default": "",
+      "isSetting": true,
+      "inputType": "Text",
+      "validators": [],
+      "title": "Clases",
+      "help": "Se utiliza para diseñar o manipular la apariencia de este Bloque. Estos están predefinidos en el tema o se agregan en Configuración del proyecto> CSS personalizado/Código menos."
+    },
+    "_isOptional": {
+      "type": "boolean",
+      "default": false,
+      "isSetting": true,
+      "inputType": "Checkbox",
+      "validators": [],
+      "title": "¿Es esto opcional?",
+      "help": "No es necesario completar un bloque opcional, ni ninguno de los componentes contenidos en él."
+    },
+    "_isAvailable": {
+      "type": "boolean",
+      "default": true,
+      "isSetting": true,
+      "inputType": "Checkbox",
+      "validators": [],
+      "title": "¿Está disponible?",
+      "help": "Controla si este bloque y su contenido están disponibles en el curso o no."
+    },
+    "_isHidden": {
+      "type": "boolean",
+      "default": false,
+      "isSetting": true,
+      "inputType": "Checkbox",
+      "validators": [],
+      "title": "¿Esto está escondido?",
+      "help": "Habilitar esto es equivalente a aplicar el CSS 'display:none' al bloque."
+    },
+    "_isVisible": {
+      "type": "boolean",
+      "default": true,
+      "isSetting": true,
+      "inputType": "Checkbox",
+      "validators": [],
+      "title": "¿Es esto visible?",
+      "help": "Deshabilitar esto es equivalente a aplicar el CSS 'visibility:hidden' al bloque."
+    },
+    "_requireCompletionOf": {
+      "type": "number",
+      "default": -1,
+      "isSetting": true,
+      "inputType": "Number",
+      "validators": ["number"],
+      "title": "Requerir la finalización de",
+      "help": "El número de componentes dentro de este bloque que el alumno debe completar para que este bloque se establezca como completado. Un valor de -1 requiere que se completen todos."
+    },
+    "_ariaLevel": {
+      "type": "number",
+      "default": 0,
+      "title" : "etiqueta aria",
+      "isSetting": true,
+      "inputType": "Number",
+      "validators": ["number"],
+      "help": "Si necesita anular el nivel de ARIA de bloque predeterminado (como se define en los Ajustes de configuración), configúrelo en cualquier número mayor que 0."
+    },
+    "_onScreen": {
+      "type": "object",
+      "title": "Clases en pantalla",
+      "help": "Estas configuraciones le permiten adjuntar clases al bloque cuando está dentro de la ventana gráfica del navegador; útil para ejecutar animaciones basadas en CSS en bloques a medida que se desplazan a la vista.",
+      "properties": {
+        "_isEnabled": {
+          "type": "boolean",
+          "default": false,
+          "isSetting": true,
+          "inputType": "Checkbox",
+          "validators": [],
+          "title": "¿Activada?"
+        },
+        "_classes": {
+          "type": "string",
+          "default": "",
+          "isSetting": true,
+          "required": false,
+          "inputType": "Text",
+          "validators": [],
+          "title": "Clases",
+          "help": "La(s) clase(s) CSS para agregar al elemento de bloque."
+        },
+        "_percentInviewVertical": {
+          "type": "number",
+          "required": false,
+          "default": 50,
+          "isSetting": true,
+          "title": "Porcentaje a la vista",
+          "inputType": "Number",
+          "validators": ["number"],
+          "help": "Controla qué porcentaje de la altura del bloque debe estar en la ventana gráfica para que se agreguen las clases CSS."
+        }
+      }
+    },
+    "_extensions": {
+      "type": "object"
+    },
+    "themeSettings": {
+      "type": "object"
+    }
+  }
+}

@@ -1,0 +1,436 @@
+{
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "id": "http://jsonschema.net",
+  "properties": {
+    "_extensions": {
+      "type": "object"
+    },
+    "_enabledExtensions": {
+      "type":"object"
+    },
+    "_theme": {
+      "type": "string",
+      "default": "adapt-contrib-vanilla"
+    },
+    "_menu": {
+      "type": "string",
+      "default": "adapt-contrib-boxMenu"
+    },
+    "_courseId": {
+      "type": "objectid",
+      "required": true
+    },
+    "_completionCriteria": {
+      "type": "object",
+      "title": "Criterios de finalización",
+      "properties": {
+        "_requireContentCompleted": {
+          "type": "boolean",
+          "default": true,
+          "inputType": "Checkbox",
+          "validators": [],
+          "title": "Requerir finalización de contenido",
+          "help": "Especifica que se debe completar todo el contenido del curso."
+        },
+        "_requireAssessmentCompleted": {
+          "type": "boolean",
+          "default": false,
+          "inputType": "Checkbox",
+          "validators": [],
+          "title": "Requerir finalización de la evaluación",
+          "help": "Especifica que se deben completar todas las evaluaciones del curso."
+        }
+      }
+    },
+    "_defaultLanguage": {
+      "type": "string",
+      "required": true,
+      "default": "en",
+      "title": "Idioma predeterminado",
+      "inputType": "Text",
+      "validators": ["required"]
+    },
+    "_defaultDirection": {
+      "type": "string",
+      "required": true,
+      "default": "ltr",
+      "title": "Dirección del texto",
+      "validators": ["required"],
+      "inputType": {
+        "type": "Select",
+        "options": [
+          "ltr",
+          "rtl"
+        ]
+      }
+    },
+    "_accessibility": {
+      "type": "object",
+      "title": "Accesibilidad",
+      "properties" : {
+        "_isEnabled": {
+          "type": "boolean",
+          "default": true,
+          "inputType": "Checkbox",
+          "validators": [],
+          "title": "¿Activada?"
+        },
+        "_isSkipNavigationEnabled": {
+          "type": "boolean",
+          "default": true,
+          "inputType": "Checkbox",
+          "validators": [],
+          "title": "¿Habilitar el vínculo Omitir navegación?",
+          "help": "Agrega un enlace al inicio de la página para permitir que los usuarios de tecnología de asistencia salten la navegación y vayan directamente al contenido de la página."
+        },
+        "_ariaLevels": {
+          "type": "object",
+          "title": "Niveles ARIA",
+          "help": "Define qué valor asignar al atributo de nivel aria para los diversos elementos de Adapt",
+          "properties" : {
+            "_menu": {
+              "type": "number",
+              "required": true,
+              "default": 1,
+              "title": "Elemento de menú Nivel ARIA",
+              "inputType": "Number",
+              "validators": ["required", "number"]
+            },
+            "_menuGroup": {
+              "type": "number",
+              "required": true,
+              "default": 2,
+              "title": "ARIA level de elemento de grupo de menú",
+              "inputType": "Number",
+              "validators": ["required", "number"]
+            },
+            "_menuItem": {
+              "type": "number",
+              "required": true,
+              "default": 2,
+              "title": "ARIA level de elemento del menú",
+              "inputType": "Number",
+              "validators": ["required", "number"],
+              "help": "El nivel ARIA del elemento del elemento del menú deberá cambiarse a 3 si se utilizan grupos de menú y se requiere compatibilidad con A11Y."
+            },
+            "_page": {
+              "type": "number",
+              "required": true,
+              "default": 1,
+              "title": "ARIA level de elemento de página",
+              "inputType": "Number",
+              "validators": ["required", "number"]
+            },
+            "_article": {
+              "type": "number",
+              "required": true,
+              "default": 2,
+              "title": "ARIA nivel de elemento del artículo",
+              "inputType": "Number",
+              "validators": ["required", "number"]
+            },
+            "_block": {
+              "type": "number",
+              "required": true,
+              "default": 3,
+              "title": "ARIA nivel de elemento de bloque",
+              "inputType": "Number",
+              "validators": ["required", "number"]
+            },
+            "_component": {
+              "type": "number",
+              "required": true,
+              "default": 4,
+              "title": "ARIA nivel de elemento componente",
+              "inputType": "Number",
+              "validators": ["required", "number"]
+            },
+            "_componentItem": {
+              "type": "number",
+              "required": true,
+              "default": 5,
+              "title": "Componente Elemento elemento Nivel ARIA",
+              "inputType": "Number",
+              "validators": ["required", "number"]
+            },
+            "_notify": {
+              "type": "number",
+              "required": true,
+              "default": 1,
+              "title": "ARIA nivel de título emergente",
+              "inputType": "Number",
+              "validators": ["required", "number"]
+            }
+          }
+        },
+        "_options": {
+          "type": "object",
+          "default": {},
+          "title": "Opciones ampliadas de accesibilidad",
+          "inputType": {
+            "type": "CodeEditor",
+            "mode": "json"
+          },
+          "validators": [],
+          "help": "Objeto opcional que se puede utilizar para personalizar el comportamiento de accesibilidad"
+        }
+      }
+    },
+    "_fixes": {
+      "type": "object",
+      "default": {
+        "_imgLazyLoad": true
+      },
+      "title": "Corrige opciones extendidas",
+      "inputType": {
+        "type": "CodeEditor",
+        "mode": "json"
+      },
+      "validators": [],
+      "help": "Objeto opcional que se puede utilizar para personalizar la aplicación de correcciones"
+    },
+    "screenSize": {
+      "type": "object",
+      "title": "Tamaño de pantalla",
+      "properties": {
+        "small": {
+          "type": "number",
+          "required": true,
+          "default": 520,
+          "title": "Pequeña",
+          "inputType": "Number",
+          "validators": ["required", "number"],
+          "help": "Ancho de píxel para el punto de interrupción pequeño, ejemplo de teléfonos móviles"
+        },
+        "medium": {
+          "type": "number",
+          "required": true,
+          "default": 760,
+          "title": "Medio",
+          "inputType": "Number",
+          "validators": ["required", "number"],
+          "help": "Ancho de píxel para el punto de interrupción medio, dispositivos de tableta de ejemplo"
+        },
+        "large": {
+          "type": "number",
+          "required": true,
+          "default": 900,
+          "title": "Larga",
+          "inputType": "Number",
+          "validators": ["required", "number"],
+          "help": "Pixel width for the large breakpoint, e.g. laptop/desktop computers"
+        }
+      }
+    },
+    "_questionWeight": {
+      "type": "number",
+      "required": true,
+      "default": 1,
+      "isSetting": true,
+      "title": "Peso de la pregunta",
+      "inputType": "Number",
+      "validators": ["required", "number"]
+    },
+    "_drawer": {
+      "type": "object",
+      "isSetting": false,
+      "title": "Mostrar facilidad en",
+      "properties": {
+        "_showEasing": {
+          "type": "string",
+          "required": true,
+          "default": "easeOutQuart",
+          "title": "Mostrar facilidad en",
+          "inputType": {
+            "type": "Select",
+            "options": [
+              "easeInSine",
+              "easeOutSine",
+              "easeInOutSine",
+              "easeInQuad",
+              "easeOutQuad",
+              "easeInOutQuad",
+              "easeInCubic",
+              "easeOutCubic",
+              "easeInOutCubic",
+              "easeInQuart",
+              "easeOutQuart",
+              "easeInOutQuart",
+              "easeInQuint",
+              "easeOutQuint",
+              "easeInOutQuint",
+              "easeInExpo",
+              "easeOutExpo",
+              "easeInOutExpo",
+              "easeInCirc",
+              "easeOutCirc",
+              "easeInOutCirc",
+              "easeInBack",
+              "easeOutBack",
+              "easeInOutBack",
+              "easeInElastic",
+              "easeOutElastic",
+              "easeInOutElastic",
+              "easeInBounce",
+              "easeOutBounce",
+              "easeInOutBounce"
+            ]
+          },
+          "validators": ["required"]
+        },
+        "_hideEasing": {
+          "type": "string",
+          "required": true,
+          "default": "easeInQuart",
+          "title": "Ocultar aceleración",
+          "inputType": {
+            "type": "Select",
+            "options": [
+              "easeInSine",
+              "easeOutSine",
+              "easeInOutSine",
+              "easeInQuad",
+              "easeOutQuad",
+              "easeInOutQuad",
+              "easeInCubic",
+              "easeOutCubic",
+              "easeInOutCubic",
+              "easeInQuart",
+              "easeOutQuart",
+              "easeInOutQuart",
+              "easeInQuint",
+              "easeOutQuint",
+              "easeInOutQuint",
+              "easeInExpo",
+              "easeOutExpo",
+              "easeInOutExpo",
+              "easeInCirc",
+              "easeOutCirc",
+              "easeInOutCirc",
+              "easeInBack",
+              "easeOutBack",
+              "easeInOutBack",
+              "easeInElastic",
+              "easeOutElastic",
+              "easeInOutElastic",
+              "easeInBounce",
+              "easeOutBounce",
+              "easeInOutBounce"
+            ]
+          },
+          "validators": ["required"]
+        },
+        "_duration": {
+          "type": "number",
+          "required": true,
+          "default": 400,
+          "title": "Duración",
+          "inputType": "Number",
+          "validators": ["required", "number"]
+        }
+      }
+    },
+    "_generateSourcemap": {
+      "type": "boolean",
+      "default": false,
+      "isSetting": true,
+      "inputType": "Checkbox",
+      "validators": [],
+      "title": "¿Generar mapas fuente?",
+      "help": "Permite depurar JavaScript y CSS del curso a través de las herramientas de desarrollo del navegador."
+    },
+    "_forceRouteLocking": {
+      "type": "boolean",
+      "default": true,
+      "isSetting": true,
+      "inputType": "Checkbox",
+      "validators": [],
+      "title": "¿Hacer cumplir el bloqueo de ruta?",
+      "help": "Si el bloqueo está habilitado, esta configuración impide navegar a rutas bloqueadas"
+    },
+    "_disableAnimationFor": {
+      "type": "array",
+      "default": [],
+      "title": "Desactivar animación para",
+      "isSetting": true,
+      "inputType": "List",
+      "help": "Le permite deshabilitar algunas animaciones (p. ej., la animación de cierre del cajón) en plataformas en las que no funcionan bien, utilizando selectores de CSS para apuntar a las plataformas relevantes a través de las clases en el elemento HTML."
+    },
+    "_logging": {
+      "type": "object",
+      "title": "Inicio sesión",
+      "properties": {
+        "_isEnabled": {
+          "type": "boolean",
+          "default": true,
+          "required": true,
+          "inputType": "Checkbox",
+          "validators": [],
+          "title": "¿Activada?"
+        },
+        "_level": {
+          "type": "string",
+          "required": true,
+          "default" : "info",
+          "title" : "Nivel de registro",
+          "validators": [],
+          "inputType": {
+            "type": "Select",
+            "options": [
+              "debug",
+              "info",
+              "warn",
+              "error",
+              "fatal"
+            ]
+          }
+        },
+        "_console": {
+          "type": "boolean",
+          "default": true,
+          "inputType": "Checkbox",
+          "validators": [],
+          "title": "¿Iniciar sesión en la consola del navegador web?"
+        },
+        "_warnFirstOnly": {
+          "type": "boolean",
+          "default": true,
+          "inputType": "Checkbox",
+          "validators": [],
+          "title": "¿Mostrar solo las primeras advertencias obsoletas y eliminadas?"
+        }
+      }
+    },
+    "_scrollingContainer": {
+      "type": "object",
+      "title": "Soporte de desplazamiento de iFrame y Screen Reader",
+      "properties" : {
+        "_isEnabled": {
+          "type": "boolean",
+          "default": false,
+          "required": true,
+          "inputType": "Checkbox",
+          "validators": [],
+          "title": "Enabled?"
+        },
+        "_limitToSelector": {
+          "type": "string",
+          "required": false,
+          "default": "",
+          "title": "Límite a la selector",
+          "inputType": "Text",
+          "validators": [],
+          "help": "Selector de CSS para que coincida con el elemento HTML al determinar si debe estar activo o no."
+        }
+      }
+    },
+    "themeSettings": {
+      "type": "object"
+    },
+    "_themePreset": {
+      "type": "objectid",
+      "required": false
+    }
+  }
+}

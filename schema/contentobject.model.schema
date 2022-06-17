@@ -1,0 +1,255 @@
+{
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "id": "http://jsonschema.net",
+  "$ref": "http://localhost/system/content.schema",
+  "properties": {
+    "title": {
+      "type": "string",
+      "required": true,
+      "default": "Nuevo título de página/menú",
+      "title": "Título",
+      "inputType": "Text",
+      "validators": ["required"],
+      "translatable": true
+    },
+    "displayTitle": {
+      "type": "string",
+      "required": false,
+      "default": "Nuevo título de página/menú",
+      "title": "Mostrar título",
+      "inputType": "DisplayTitle",
+      "validators": [],
+      "help": "Al ver un menú/página: este es el título que se mostrará en el menú/página",
+      "translatable": true
+    },
+    "subtitle": {
+      "type": "string",
+      "required": false,
+      "title": "Subtitular",
+      "default": "",
+      "inputType": "Text",
+      "validators": [],
+      "help": "Al ver un menú/página: este es el subtítulo que se mostrará en el menú/página",
+      "translatable": true
+    },
+    "pageBody":{
+      "type": "string",
+      "default" : "",
+      "inputType": "TextArea",
+      "validators": [],
+      "title": "Cuerpo de la página",
+      "translatable": true,
+      "help": "Si se establece, este texto se mostrará en lugar del texto del cuerpo cuando se vea esta página."
+    },
+    "body":{
+      "type": "string",
+      "default" : "",
+      "title": "Cuerpo",
+      "inputType": "TextArea",
+      "validators": [],
+      "translatable": true
+    },
+    "instruction": {
+      "type": "string",
+      "required": false,
+      "title": "Texto de instrucción",
+      "default": "",
+      "inputType": "Text",
+      "validators": [],
+      "translatable": true
+    },
+    "_htmlClasses": {
+      "type": "string",
+      "required": false,
+      "title": "Clases HTML",
+      "default": "",
+      "inputType": "Text",
+      "validators": [],
+      "help": "Si se configura, esta clase o clases de CSS se aplicarán al elemento <html> siempre que esta sea la página activa del curso. Estos están predefinidos en el tema o se agregan en Configuración del proyecto > CSS personalizado/Menos código."
+    },
+    "_graphic": {
+      "type": "object",
+      "title": "Gráfico",
+      "properties": {
+        "alt": {
+          "type": "string",
+          "required": false,
+          "title": "Texto alternativo",
+          "default": "",
+          "inputType": "Text",
+          "validators": [],
+          "help": "Una descripción de la imagen; requerido cuando tiene un significado que debe transmitirse al alumno. Para imágenes 'decorativas', déjelo en blanco.",
+          "translatable": true
+        },
+        "src": {
+          "type": "string",
+          "required": false,
+          "default": "",
+          "title": "Cargar imagen",
+          "inputType": "Asset:image",
+          "validators": [],
+          "help": "Este es el enlace a la imagen"
+        }
+      }
+    },
+    "linkText": {
+      "type": "string",
+      "required": false,
+      "title": "Reemplazo de enlace de botón",
+      "default": "Vista",
+      "inputType": "Text",
+      "validators" : ["required"],
+      "translatable": true
+    },
+    "duration": {
+      "type": "string",
+      "required": false,
+      "title": "Duración",
+      "default": "",
+      "inputType": "Text",
+      "validators" : [""],
+      "help": "Indica cuánto tiempo debe tardar en completarse esta página o sección",
+      "translatable": true
+    },
+    "_lockedBy": {
+      "type": "array",
+      "required": false,
+      "default": [],
+      "title": "Locked by",
+      "inputType": "List",
+      "validators": [],
+      "help": "Si el curso utiliza un tipo de bloqueo de menú 'personalizado', este debe contener la identificación única de los elementos que deben completarse antes de que se desbloquee."
+    },
+    "_lockType": {
+      "type": "string",
+      "default": "",
+      "inputType": {
+        "type": "Select",
+        "options": [
+          "",
+          "custom",
+          "lockLast",
+          "sequential",
+          "unlockFirst"
+        ]
+      },
+      "title": "Tipo de bloqueo de menú",
+      "help": "Define qué mecanismo de bloqueo (si lo hay) se utilizará. Para ser utilizado sólo en los submenús.",
+      "validators": []
+    },
+    "_classes": {
+      "type": "string",
+      "default": "",
+      "isSetting": true,
+      "inputType": "Text",
+      "validators": [],
+      "title": "Página",
+      "help": "Se utiliza para diseñar o manipular la apariencia de esta página (o submenú). Estos están predefinidos en el tema o se agregan en Configuración del proyecto > CSS personalizado/Menos código."
+    },
+    "_isOptional": {
+      "type": "boolean",
+      "default": false,
+      "isSetting": true,
+      "inputType": "Checkbox",
+      "validators": [],
+      "title": "¿Es esto opcional?",
+      "help": "No es necesario completar una página opcional, ni ninguno de los artículos, bloques y componentes contenidos en ella."
+    },
+    "_isAvailable": {
+      "type": "boolean",
+      "default": true,
+      "isSetting": true,
+      "inputType": "Checkbox",
+      "validators": [],
+      "title": "¿Está disponible?",
+      "help": "Controla si esta página y su contenido están disponibles en el curso o no."
+    },
+    "_isHidden": {
+      "type": "boolean",
+      "default": false,
+      "isSetting": true,
+      "inputType": "Checkbox",
+      "validators": [],
+      "title": "¿Esto está escondido?",
+      "help": "Oculta esta página del menú del curso. Debe ser compatible con el menú que está utilizando en su curso."
+    },
+    "_isVisible": {
+      "type": "boolean",
+      "default": true,
+      "isSetting": true,
+      "inputType": "Checkbox",
+      "validators": [],
+      "title": "¿Es esto visible?",
+      "help": "Equivalente a la propiedad de visibilidad CSS. A menos que tenga un código personalizado que use esto, es muy poco probable que desee cambiar esta configuración a nivel de página."
+    },
+    "_requireCompletionOf": {
+      "type": "number",
+      "default": -1,
+      "isSetting": true,
+      "inputType": "Number",
+      "validators": ["number"],
+      "title": "Requerir la finalización de",
+      "help": "El número de artículos dentro de esta página que el alumno debe completar para que esta página se establezca como completada. Un valor de -1 requiere que se completen todos."
+    },
+    "_ariaLevel": {
+      "type": "number",
+      "default": 0,
+      "isSetting": true,
+      "inputType": "Number",
+      "title": "Nivel ARIA",
+      "validators": ["number"],
+      "help": "Si necesita anular el nivel de ARIA de la página predeterminada (como se define en los Ajustes de configuración), configúrelo en cualquier número mayor que 0."
+    },
+    "_onScreen": {
+      "type": "object",
+      "title": "On-screen classes",
+      "help": "Estas configuraciones le permiten adjuntar clases a la página cuando está dentro de la ventana gráfica del navegador; útil para ejecutar animaciones basadas en CSS en las páginas a medida que se desplazan a la vista.",
+      "properties": {
+        "_isEnabled": {
+          "type": "boolean",
+          "default": false,
+          "isSetting": true,
+          "inputType": "Checkbox",
+          "validators": [],
+          "title": "¿Activada?"
+        },
+        "_classes": {
+          "type": "string",
+          "default": "",
+          "isSetting": true,
+          "required": false,
+          "inputType": "Text",
+          "validators": [],
+          "title": "Clases",
+          "help": "La(s) clase(s) CSS para agregar al elemento de la página."
+        },
+        "_percentInviewVertical": {
+          "type": "number",
+          "required": false,
+          "default": 50,
+          "isSetting": true,
+          "title": "Porcentaje a la vista",
+          "inputType": "Number",
+          "validators": ["number"],
+          "help": "Controla qué porcentaje de la altura de la página debe estar en la ventana gráfica para que se agreguen las clases CSS."
+        }
+      }
+    },
+    "_extensions": {
+      "type": "object"
+    },
+    "_sortOrder": {
+      "type": "number",
+      "required": true,
+      "default": 1,
+      "editorOnly": true
+    },
+    "menuSettings": {
+      "type": "object"
+    },
+    "themeSettings": {
+      "type": "object"
+    }
+  }
+}

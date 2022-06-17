@@ -1,0 +1,191 @@
+{
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "id": "http://jsonschema.net",
+  "$ref": "http://localhost/system/trackedObject.schema",
+  "properties": {
+    "_componentType": {
+      "type": "objectid",
+      "required": true,
+      "ref": "componenttype",
+      "editorOnly": true
+    },
+    "_type": {
+      "type": "string",
+      "id": "http://jsonschema.net/_type"
+    },
+    "_component": {
+      "type": "string",
+      "required": true,
+      "default": "",
+      "title": "Componente"
+    },
+    "_layout": {
+      "type": "string"
+    },
+    "_classes": {
+      "type": "string",
+      "default": "",
+      "isSetting": true,
+      "inputType": "Text",
+      "validators": [],
+      "title": "Clases",
+      "help": "Se utiliza para diseñar o manipular la apariencia de este Componente. Estos están predefinidos en el tema o se agregan en Configuración del proyecto> CSS personalizado/Código menos."
+    },
+    "_isOptional": {
+      "type": "boolean",
+      "default": false,
+      "isSetting": true,
+      "inputType": "Checkbox",
+      "validators": [],
+      "title": "¿Es esto opcional?",
+      "help": "Un componente opcional no tiene que ser completado por el usuario."
+    },
+    "_isAvailable": {
+      "type": "boolean",
+      "default": true,
+      "isSetting": true,
+      "inputType": "Checkbox",
+      "validators": [],
+      "title": "¿Está disponible?",
+      "help": "Controla si este componente está disponible en el curso o no."
+    },
+    "_isHidden": {
+      "type": "boolean",
+      "default": false,
+      "isSetting": true,
+      "inputType": "Checkbox",
+      "validators": [],
+      "title": "¿Esto está escondido?",
+      "help": "Habilitar esto es equivalente a aplicar el CSS 'display:none' al componente."
+    },
+    "_isVisible": {
+      "type": "boolean",
+      "default": true,
+      "isSetting": true,
+      "inputType": "Checkbox",
+      "validators": [],
+      "title": "¿Es esto visible?",
+      "help": "Deshabilitar esto es equivalente a aplicar el CSS 'visibility:hidden' al componente."
+    },
+    "_isResetOnRevisit": {
+      "type": "string",
+      "default": "false",
+      "isSetting": true,
+      "inputType": {
+        "type": "Select",
+        "options": [
+          "false",
+          "soft",
+          "hard"
+        ]
+      },
+      "title": "restablecer cuando se vuelve a visitar?",
+      "help": "Controla si este componente se restablecerá cuando el alumno abandone la página y vuelva a ella. La configuración 'suave' restablecerá el componente para permitir que el alumno lo intente nuevamente, pero no requerirá que lo haga; mientras que la configuración 'dura' requerirá que lo hagan. El valor predeterminado (falso) no hará que el componente se reinicie.",
+      "validators": []
+    },
+    "_ariaLevel": {
+      "type": "number",
+      "default": 0,
+      "title": "Nivel ARIA",
+      "isSetting": true,
+      "inputType": "Number",
+      "validators": ["number"],
+      "help": "Si necesita anular el nivel de ARIA del componente predeterminado (como se define en los Ajustes de configuración), configúrelo en cualquier número mayor que 0."
+    },
+    "_disableAccessibilityState": {
+      "type": "boolean",
+      "default": false,
+      "isSetting": true,
+      "inputType": "Checkbox",
+      "validators": [],
+      "title": "¿El estado de accesibilidad está deshabilitado?",
+      "help": "Controla si el usuario puede tabular a una etiqueta oculta que describe el estado de finalización del componente"
+    },
+    "_parentId": {
+      "type": "objectid",
+      "required": true
+    },
+    "_courseId": {
+      "type": "objectid",
+      "required": true,
+      "editorOnly": true
+    },
+    "title": {
+      "type": "string",
+      "required": true,
+      "default": "Título del nuevo componente",
+      "title": "Título",
+      "inputType": "Text",
+      "validators": ["required"],
+      "translatable": true
+    },
+    "displayTitle": {
+      "type": "string",
+      "required": false,
+      "default": "Título del nuevo componente",
+      "title": "Mostrar título",
+      "inputType": "DisplayTitle",
+      "validators": [],
+      "help": "Al ver un componente, este es el título que se mostrará",
+      "translatable": true
+    },
+    "body":{
+      "type": "string",
+      "default" : "",
+      "title": "Cuerpo",
+      "inputType": "TextArea",
+      "validators": [],
+      "translatable": true
+    },
+    "_onScreen": {
+      "type": "object",
+      "title": "en la pantalla classes",
+      "help": "Esta configuración le permite adjuntar clases al componente cuando está dentro de la ventana gráfica del navegador; útil para ejecutar animaciones basadas en CSS en componentes a medida que se desplazan a la vista.",
+      "properties": {
+        "_isEnabled": {
+          "type": "boolean",
+          "default": false,
+          "isSetting": true,
+          "inputType": "Checkbox",
+          "validators": [],
+          "title": "Enabled?"
+        },
+        "_classes": {
+          "type": "string",
+          "default": "",
+          "isSetting": true,
+          "required": false,
+          "inputType": "Text",
+          "validators": [],
+          "title": "Clases",
+          "help": "La(s) clase(s) CSS para agregar al elemento del componente."
+        },
+        "_percentInviewVertical": {
+          "type": "number",
+          "required": false,
+          "default": 50,
+          "isSetting": true,
+          "title": "Porcentaje a la vista",
+          "inputType": "Number",
+          "validators": ["number"],
+          "help": "Controla qué porcentaje de la altura del componente debe estar en la ventana gráfica para que se agreguen las clases CSS."
+        }
+      }
+    },
+    "_extensions": {
+      "type": "object"
+    },
+    "themeSettings": {
+      "type": "object"
+    },
+    "properties" : {
+      "type": "object"
+    },
+    "_colorLabel": {
+      "type": "string",
+      "required": false,
+      "editorOnly": true
+    }
+  }
+}
